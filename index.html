@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Password Generator</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+</head>
+<body>
+<h1 class="title">Password Generator</h1>
+
+<div id="password_generator">
+
+<div class="generator_options">
+<div class="generator_option">
+<span class="option_name">Character type</span><br>
+<label><input type="checkbox" value="uppercase" v-model="type"> uppercase</label>
+<label><input type="checkbox" value="lowercase" v-model="type"> lowercase</label>
+<label><input type="checkbox" value="number" v-model="type"> number</label>
+<label><input type="checkbox" value="symbol" v-model="type"> symbol</label>
+</div>
+
+<div class="generator_option">
+<span class="option_name">Password Length</span><br>
+
+<label><input type="number" min="6" max="42" v-model="length"></label>
+<label><input type="range" min="6" max="42" v-model="length"></label>
+</div>
+
+<div class="generator_option">
+<span class="option_name">Number of Password</span><br>
+
+<label><input type="number" min="1" max="100" v-model="count"></label>
+</div>
+
+<div class="generator_button">
+<button v-on:click="generatePassword">Generate</button>
+</div>
+</div>
+
+<div class="generator_result">
+<p class="message">{{ message }}</p>
+
+<ul class="passwords">
+<li v-for="password in passwords">
+{{ password }}
+</li>
+</ul>
+</div>
+
+</div>
+
+<script src="password-generator.js"></script>
+</body>
+</html>
