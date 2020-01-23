@@ -1,5 +1,8 @@
 language: node_js
-sudo: false
+
+script:
+  - npm run lint
+  - npm run build
 
 deploy:
   provider: pages
@@ -7,6 +10,7 @@ deploy:
     tags: true
   repo: thingsym/password-generator
   target_branch: gh-pages
+  local-dir: public
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   keep_history: true
