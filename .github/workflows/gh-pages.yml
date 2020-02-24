@@ -1,0 +1,35 @@
+name: publish to github pages
+
+on:
+  create:
+    tags:
+      - v*.*.*
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: install
+        run: npm install
+
+      - name: lint
+        run: npm run lint
+
+      - name: build
+        run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          publish_dir: ./public
