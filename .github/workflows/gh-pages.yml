@@ -27,9 +27,10 @@ jobs:
       - name: build
         run: npm run build
 
-      - name: Deploy
+      - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           publish_dir: ./public
+          commit_message: 'deploy to GitHub Pages via GitHub Actions'
