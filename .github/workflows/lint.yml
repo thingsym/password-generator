@@ -1,9 +1,12 @@
-name: lint
+name: Lint
 
 on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   build:
@@ -11,12 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: setup node
+      - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '12'
 
-      - name: install
+      - name: Install Node.js package dependencies
         run: npm install
 
       - name: lint
