@@ -9,7 +9,7 @@ on:
       - '**'
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -22,5 +22,5 @@ jobs:
       - name: Install Node.js package dependencies
         run: npm install
 
-      - name: lint
+      - name: Lint
         run: npm run lint
